@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: black;
+}
+
+.container {
+    position: absolute;
+    height: 50%;
+    width: 100%;
+    top: 20%;
+    left: 18%;
+}
+
+.content {
+    color: white;
+    display: flex;
+    position: absolute;
+    top: 20%;
+}
+
+h2 {
+    font-size: 80px;
+    font-weight: 500;
+    letter-spacing: 10px;
+    text-shadow: 0px 0px 10px #00b3ff,
+    0px 0px 20px #00b3ff,
+    0px 0px 40px #00b3ff,
+    0px 0px 80px #00b3ff,
+    0px 0px 100px #00b3ff;
+}
+
+.static_text {
+    padding-right: 15px;
+}
+
+.static_text, .dynamic_text {
+    position: relative;
+}
+
+.slide_box {
+    position: absolute !important;
+    height: 120%;
+    width: 120%;
+    background-color: black;
+    top: 0;
+    animation: slider 2.5s infinite ease;
+}
+
+.slide_pipe {
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 5px;
+    background-color: black;
+    box-shadow:  0px 0px 10px white,
+    0px 0px 20px white,
+    0px 0px 40px white,
+    0px 0px 80px white,
+    0px 0px 100px white;
+}
+
+@keyframes slider{
+    0%{
+        left: 0%;
+    }
+    75%{
+        left: 100%;
+    }
+    100%{
+        left: 0%;
+    }
+}

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>The ASTC (Advanced Spartan 3 Corp)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="/styles.css" rel="stylesheet">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+    </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                // Restore playback time and play music if available
+                var playbackTime = localStorage.getItem('playbackTime');
+                if (playbackTime) {
+                    var audio = document.getElementById('background-music');
+                    audio.currentTime = parseFloat(playbackTime);
+                    audio.play(); // Start playing from the stored playback time
+                }
+            });
+        </script>
+</head>
+
+<body>
+    <div>
+        <header>
+            <h1 style="text-align:center"><strong><i>The ASTC (Advanced Spartan 3 Corp)</i></strong></h1>
+        </header>
+
+        <!-- Add menu toggle button -->
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/index.html">Home</a>
+                <a class="dropdown-item" href="/HTML/Titans/titans.html">The Titans</a>
+                <a class="dropdown-item" href="/HTML/Enforcers/enforcers.html">The Stable Enforcers</a>
+                <a class="dropdown-item" href="/HTML/Kinetic/kinetic.html">The Kinetic Legion</a>
+                <a class="dropdown-item" href="/HTML/Cobros/cobros.html">The Cobros</a>
+                <a class="dropdown-item" href="/HTML/Spartans/spartans.html">The ASTC (Advanced Spartan 3 Corp)</a>
+                <a class="dropdown-item" href="/HTML/Blud/blud.html">The Bludbruhs</a>
+                <a class="dropdown-item" href="/HTML/League/league.html">The League</a>
+                <a class="dropdown-item" href="/HTML/Conservation/conservation.html">The Conservation Resolution</a>
+                <a class="dropdown-item" href="/HTML/Designs/others.html">Designs</a>
+            </div>
+        </div>
+        <nav>
+            <!-- Add side menu -->
+            <!-- <div class="side-menu"> -->
+            <ul>
+                <li><a class="button" a href="/HTML/Spartans/spartans.html">Spartans</a></li>
+                <li><a class="button" a href="/HTML/Spartans/theastc.html">Play Music</a></li>
+                <li><a class="button" a href="cam.html">Cam</a></li>
+                <li><a class="button" a href="ben.html">Ben</a></li>
+                <li><a class="button" a href="alex.html">Alex</a></li>
+
+
+                <!-- Add other menu items here -->
+            </ul>
+            <!-- </div> -->
+        </nav>
+        <!-- Rest of your existing content goes here -->
+        <!-- ... -->
+
+    </div>
+
+    <div class="background"></div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="/audio/Halo.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+ document.addEventListener("DOMContentLoaded", function() {
+            var backgrounds = [
+                "/Halo/20.png",
+                "/Halo/22.jpg",
+                "/Halo/24.jpg",
+                "/Halo/25.jpg",
+                "/Halo/26.jpg",
+                "/Halo/27.jpg",
+                "/Halo/21.jpg",
+                "/Halo/9.jpg",
+                "/Halo/9.png",
+                "/Halo/10.jpg",
+                "/Halo/11.jpg",
+                "/Halo/23.jpg",
+                "/Halo/13.jpg",
+                "/Halo/15.jpg",
+                "/Halo/16.jpg",
+                "/Halo/28.jpg",
+                "/Halo/31.jpg",
+                "/Halo/30.jpg",
+                "/Halo/29.jpg"
+            ];
+            var randomIndex = Math.floor(Math.random() * backgrounds.length);
+            var selectedBackground = backgrounds[randomIndex];
+
+            document.querySelector(".background").style.backgroundImage = "url('" + selectedBackground + "')"
+
+            // Add event listener to play audio on user interaction
+            document.addEventListener("click", function() {
+                playBackgroundMusic();
+            });
+        });
+
+        // Function to play background music
+        function playBackgroundMusic() {
+            const audio = document.getElementById('background-music');
+            audio.play();
+        }
+
+        var playbackTime = localStorage.getItem('playbackTime');
+        if (playbackTime) {
+            var audio = document.getElementById('background-music');
+            audio.currentTime = parseFloat(playbackTime);
+            audio.play(); // Start playing from the stored playback time
+        }
+    </script>
+    <!-- Link JavaScript file -->
+    <script src="/scripts.js"></script>
+</body>
+
+</html>
+
+

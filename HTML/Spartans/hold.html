@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Spartans</title>
+    <link href="/styles.css" rel="stylesheet">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        #uploaded-image-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #image-upload-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1 style="text-align:center"><strong><i>The Spartans</i></strong></h1>
+        </header>
+
+        <!-- Add menu toggle button -->
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+            <div class="dropdown">
+                <div class="trigger">Menu</div>
+                <div class="content">
+                    <a class="dropdown-item" href="/index.html">Home</a>
+                    <a class="dropdown-item" href="/HTML/Titans/titans.html">The Titans</a>
+                    <a class="dropdown-item" href="/HTML/Enforcers/enforcers.html">The Stable Enforcers</a>
+                    <a class="dropdown-item" href="/HTML/Kinetic/kinetic.html">The Kinetic Legion</a>
+                    <a class="dropdown-item" href="/HTML/Cobros/cobros.html">The Cobros</a>
+                    <a class="dropdown-item" href="/HTML/Spartans/spartans.html">The ASTC (Advanced Spartan 3 Corp)</a>
+                    <a class="dropdown-item" href="/HTML/Blud/blud.html">The Bludbruhs</a>
+                    <a class="dropdown-item" href="/HTML/League/league.html">The League</a>
+                    <a class="dropdown-item" href="/HTML/Conservation/conservation.html">The Conservation Resolution</a>
+                    <a class="dropdown-item" href="/HTML/Designs/others.html">Designs</a>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <!-- Add side menu -->
+            <!-- <div class="side-menu"> -->
+            <ul>
+                <li><a href="/index.html">Spartans</a></li>
+                <li><a href="/HTML/Spartans/spartans.html">Play Music</a></li>
+
+                <!-- Add other menu items here -->
+            </ul>
+            <!-- </div> -->
+        </nav>
+        <!-- Rest of your existing content goes here -->
+        <!-- ... -->
+
+    </div>
+
+    <!-- Dropdown menu -->
+    <div class="dropdown" style="position: fixed; top: 10px; right: 10px;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Show Image
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" onclick="showImage()">Activate</a>
+        </div>
+    </div>
+
+    <div class="background"></div>
+
+    <div id="uploaded-image-container" style="display: none;">
+        <img src="/Halo/Activation_Index.jpg" alt="Activation Index">
+    </div>
+
+    <!-- Image upload form -->
+    <form id="image-upload-form">
+        <div class="form-group">
+            <label for="image-input">Choose Image</label>
+            <input type="file" class="form-control-file" id="image-input">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <div class="background"></div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="/audio/Halo.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="uploaded-image-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var backgrounds = [
+                "/Halo/1.jpg",
+                "/Halo/2.jpg",
+                "/Halo/4.jpg",
+                "/Halo/6.jpg",
+                "/Halo/7.jpg",
+                "/Halo/8.jpg",
+                "/Halo/10.jpg",
+                "/Halo/11.jpg",
+                "/Halo/12.jpg",
+                "/Halo/13.jpg",
+                "/Halo/14.jpg",
+                "/Halo/16.jpg",
+                "/Halo/17.jpg"
+            ];
+            var randomIndex = Math.floor(Math.random() * backgrounds.length);
+            var selectedBackground = backgrounds[randomIndex];
+
+            document.querySelector(".background").style.backgroundImage = "url('" + selectedBackground + "')";
+
+            // Add event listener to play audio on user interaction
+            document.addEventListener("click", function() {
+                playBackgroundMusic();
+            });
+
+            // Image upload form
+            const form = document.getElementById('image-upload-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const input = document.getElementById('image-input');
+                const file = input.files[0];
+                if (file) {
+                    // Read uploaded image as data URL
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const uploadedImageURL = e.target.result;
+                        // Display the uploaded image
+                        displayUploadedImage(uploadedImageURL);
+                        // You can perform additional actions with the uploaded image here
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+        // Function to play background music
+        function playBackgroundMusic() {
+            const audio = document.getElementById('background-music');
+            audio.play();
+        }
+
+    // Function to display uploaded image
+    function displayUploadedImage(imageURL) {
+                const container = document.getElementById('uploaded-image-container');
+                const img = document.createElement('img');
+                img.src = imageURL;
+                container.innerHTML = ''; // Clear previous image
+                container.appendChild(img);
+            }
+        });
+
+        function showImage() {
+            document.getElementById('uploaded-image-container').style.display = 'block';
+        }
+    </script>
+
+    <!-- Link JavaScript file -->
+    <!-- Add Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/scripts.js"></script>
+</body>
+
+</html>
+
+<!-- //star-wars-across-the-stars-acme-archives-502343U?utm_source -->
+<!-- theme -->
+<!-- https://music.youtube.com/watch?v=Jeg3eG6DJJc
+https://www.youtube.com/watch?v=Jeg3eG6DJJc
+https://www.youtube.com/watch?v=CATdwAvR4I0
+https://www.youtube.com/watch?v=0jXTBAGv9ZQ
+https://www.youtube.com/watch?v=xku2Of-K5Qc
+https://www.youtube.com/watch?v=I9MsChR2k0I
+https://www.youtube.com/watch?v=0DTc2jLaL1A
+https://www.youtube.com/watch?v=8xJMvH4yGWE -->
+
+<!-- https://www.televisiontunes.com/halo -->
+
+<!-- https://getbootstrap.com/docs/4.0/components/button-group/ -->
+<!-- https://www.youtube.com/watch?v=_MrShB9fh7U -->
+<!-- https://github.com/haydn5/animated-navigation-safari-fix/blob/main/index.html -->
+<!-- https://www.youtube.com/watch?v=vJ85fm4m7lw -->
+<!-- https://www.youtube.com/watch?v=dIyVTjJAkLw -->
+<!-- https://github.com/codeSTACKr/hamburger-animation -->
+<!-- https://www.sideshow.com/collectibles/star-wars-across-the-stars-acme-archives-502343U?utm_source=Google&utm_medium=OSP&utm_campaign=GoogleMerchant&utm_nooverride=1&gclid=EAIaIQobChMIu5mqy-TBhAMVZ4I6BR2iIgTQEAEYASACEgLN1PD_BwE -->

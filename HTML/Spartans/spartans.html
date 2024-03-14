@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Spartans</title>
+    <link href="/styles.css" rel="stylesheet">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        #uploaded-image-container {
+            position: fixed;
+            top: -400px;
+            /* Initially off-screen */
+            left: 50%;
+            transform: translateX(-50%);
+            transition: top 3s ease-in-out;
+            /* Transition animation */
+            z-index: 999;
+            /* Ensure it's above other content */
+        }
+
+        #uploaded-image-container img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #image-upload-form {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        /* Dropdown Styles */
+        .dropdown .trigger {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .dropdown .trigger::after {
+            content: ">";
+            display: inline-block;
+            position: absolute;
+            right: 15px;
+            transform: rotate(90deg) scale(0.5, 1);
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .dropdown .trigger.active::after {
+            transform: rotate(-90deg) scale(0.5, 1);
+        }
+
+        .dropdown .content {
+            display: none;
+        }
+
+        .dropdown .content.active {
+            display: block;
+        }
+
+        /*id test*/
+        #dropdown #trigger {
+            /* border-bottom: 1px solid #ddd; */
+            padding: 10px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        #dropdown #trigger::after {
+            content: ">";
+            display: inline-block;
+            position: absolute;
+            right: 15px;
+            transform: rotate(90deg) scale(0.5, 1);
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        #dropdown #trigger.active::after {
+            transform: rotate(-90deg) scale(0.5, 1);
+        }
+
+        #dropdown #content {
+            display: none;
+        }
+
+        #dropdown #content.active {
+            display: block;
+        }
+
+        .wrapper {
+            /* width: 80%; */
+            /* height: auto; */
+            background-color: #90C7E3;
+            /* margin-left: auto;
+            margin-right: auto; */
+            box-shadow: 3px 3px 3px #333333;
+            /* min-width: 960px;
+            max-width: 2048px; */
+            border: 1px solid black;
+            background-image: url('/Halo/banner1.jpg');
+            background-position: center;
+        }
+
+        .wrapper img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1 style="text-align:center"><strong><i>The Spartans</i></strong></h1>
+        </header>
+
+        <!-- Add menu toggle button -->
+        <div class="menu-btn">
+            <div class="menu-btn__burger"></div>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="/index.html">Home</a>
+                <a class="dropdown-item" href="/HTML/Titans/titans.html">The Titans</a>
+                <a class="dropdown-item" href="/HTML/Enforcers/enforcers.html">The Stable Enforcers</a>
+                <a class="dropdown-item" href="/HTML/Kinetic/kinetic.html">The Kinetic Legion</a>
+                <a class="dropdown-item" href="/HTML/Cobros/cobros.html">The Cobros</a>
+                <a class="dropdown-item" href="/HTML/Spartans/spartans.html">The ASTC (Advanced Spartan 3 Corp)</a>
+                <a class="dropdown-item" href="/HTML/Blud/blud.html">The Bludbruhs</a>
+                <a class="dropdown-item" href="/HTML/League/league.html">The League</a>
+                <a class="dropdown-item" href="/HTML/Conservation/conservation.html">The Conservation Resolution</a>
+                <a class="dropdown-item" href="/HTML/Designs/others.html">Designs</a>
+            </div>
+        </div>
+        <nav>
+            <!-- Add side menu -->
+            <!-- <div class="side-menu"> -->
+            <ul>
+                <li><a class="button" a href="/index.html">Spartans</a></li>
+                <li><a class="button" a href="/HTML/Spartans/spartans.html">Play Music</a></li>
+
+                <!-- Add other menu items here -->
+            </ul>
+            <!-- </div> -->
+        </nav>
+        <!-- Rest of your existing content goes here -->
+        <!-- ... -->
+
+    </div>
+    <div class="background"></div>
+
+<!-- Dropdown menu -->
+<div id="dropdown" style="position: fixed; top: 4px; right: 10px;">
+    <div id="trigger">Show Image</div>
+    <div id="content">
+        <a id="dropdown-item" href="#" onclick="showImage('/Halo/Activation_Index.jpg')">Activate</a>
+    </div>
+</div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="/audio/Halo.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div id="uploaded-image-container"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var backgrounds = [
+                "/Halo/1.jpg",
+                "/Halo/2.jpg",
+                "/Halo/4.jpg",
+                "/Halo/6.jpg",
+                "/Halo/7.jpg",
+                "/Halo/8.jpg",
+                "/Halo/18.jpg",
+                "/Halo/32.png",
+                "/Halo/12.jpg",
+                "/Halo/33.jpg",
+                "/Halo/14.jpg",
+                "/Halo/19.jpg",
+                "/Halo/17.jpg"
+            ];
+            var randomIndex = Math.floor(Math.random() * backgrounds.length);
+            var selectedBackground = backgrounds[randomIndex];
+
+            document.querySelector(".background").style.backgroundImage = "url('" + selectedBackground + "')";
+
+            // Add event listener to play audio on user interaction
+            document.addEventListener("click", function () {
+                playBackgroundMusic();
+            });
+
+            // Function to play background music
+            function playBackgroundMusic() {
+                const audio = document.getElementById('background-music');
+                audio.play();
+            }
+
+
+            // Function to pause background music and store playback time
+            function pauseBackgroundMusic() {
+                var audio = document.getElementById('background-music');
+                audio.pause();
+                localStorage.setItem('playbackTime', audio.currentTime);
+            }
+
+            function redirectToTheastc() {
+                pauseBackgroundMusic(); // Pause background music and store playback time
+                window.location.href = '/HTML/Spartans/theastc.html'; // Redirect to theastc.html
+            }
+        });
+
+        function showImage(imageURL) {
+            const container = document.getElementById('uploaded-image-container');
+            container.innerHTML = `<img src="${imageURL}" alt="Uploaded Image">`;
+            container.style.top = '25%'; // Move the image to the middle of the screen
+            setTimeout(function () {
+                container.style.top = '75vh'; // Move the image down
+                setTimeout(function () {
+                    window.location.href = '/HTML/Spartans/theastc.html'; // Redirect after animation
+                }, 5000); // Adjust delay time as needed
+            }, 4000); // Wait for 3 seconds before moving the image down
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // Add event listener to toggle dropdown when trigger is clicked
+    document.getElementById('trigger').addEventListener('click', function () {
+        toggleDropdown('content'); // Pass the correct ID for the content
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function (event) {
+        if (!event.target.closest('#dropdown')) {
+            closeAllDropdowns();
+        }
+    });
+});
+
+// Function to toggle dropdown visibility
+function toggleDropdown(dropdownId) {
+    const dropdownContent = document.getElementById(dropdownId);
+    dropdownContent.classList.toggle('active');
+}
+
+// Function to close all dropdowns
+function closeAllDropdowns() {
+    const dropdowns = document.querySelectorAll('#dropdown-content'); // Changed selector to target dropdown-content class
+    dropdowns.forEach(dropdown => {
+        dropdown.classList.remove('active');
+    });
+}
+    </script>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Link JavaScript file -->
+    <script src="/scripts.js"></script>
+</body>
+
+</html>

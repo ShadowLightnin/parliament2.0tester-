@@ -1,0 +1,235 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #7e7e7e;
+    color: #1c3944;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+    background-color: #000000;
+    color: #FFFFFF;
+    background-image: url(Symbolmodified.JPG);
+    line-height: 475%;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-indent: 1em;
+    font-size: small;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+nav {
+    display: block;
+    font-weight: bold;
+    font-size: 110%;
+    float: left;
+    max-width: 225px;
+    height: 637px;
+    overflow: auto; /* Changed to auto to enable scrollbar when needed */
+}
+
+nav a {
+    text-decoration: none;
+    transition: background-color 2s linear;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column; /* Changed to column */
+}
+
+nav li {
+    min-width: 200px;
+    font-size: 120%;
+    text-align: center;
+    margin: 3px;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.button {
+    display: block;
+    text-decoration: none;
+    color: silver;
+    padding: 0.5em;
+    background-color: transparent; /* Changed to transparent */
+    /* border: 1px solid #ccc; Added border */
+    border-radius: 5px; /* Added border-radius */
+    transition: background-color 0.3s ease; /* Added transition */
+}
+
+
+.button:hover {
+    /* background-color: rgba(224, 224, 224, 0.5); Added hover background color with transparency */
+    color: goldenrod;
+}
+
+nav a:link {
+    color: silver;
+}
+
+nav a:visited {
+    color: #000000;
+}
+
+nav a:hover {
+    color: goldenrod;
+}
+
+main {
+    display: block;
+    padding-top: 1px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    background-color: #FFFFFF;
+    margin-left: 225px;
+    padding-left: 30px;
+    overflow: auto;
+    min-height: fit-content;
+    max-height: fit-content;
+}
+
+main ul {
+    list-style-image: url(marker.gif);
+}
+
+h1 {
+    margin-bottom: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    margin-top: 0;
+    font-size: 3em;
+    letter-spacing: 0.25em;
+}
+
+h2 {
+    color: #1a3e4ee3;
+    font-family: Georgia, "Times New Roman", serif;
+    text-shadow: 1px 1px 1px #CCCCCC;
+}
+
+h3 {
+    color: #000033;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+dt {
+    color: #002171;
+}
+
+.resort {
+    color: #1976D2;
+    font-weight: bold;
+}
+
+footer {
+    font-family: Georgia, "Times New Roman", serif;
+    text-align: center;
+    font-style: italic;
+    font-size: 75%;
+    /* padding: 2em; */
+    background-color: #FFFFFF;
+    /* margin-left: 225px; */
+}
+
+#contact {
+    font-size: 90%;
+}
+
+#wrapper {
+    /* width: 80%; */
+    background-color: #90C7E3;
+    /* margin-left: auto;
+    margin-right: auto; */
+    box-shadow: 3px 3px 3px #333333;
+    /* min-width: 960px;
+    max-width: 2048px; */
+    border: 1px solid black;
+    background-image: linear-gradient(to bottom, silver, #2f7a7a);
+}
+
+section {
+    float: left;
+    /* width: 33%; */
+    /* padding-left: 2em;
+    padding-right: 2em; */
+}
+
+  .menu-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    /* border: 3px solid #fff; */
+  }
+  .menu-btn__burger {
+    width: 50px;
+    height: 6px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all .5s ease-in-out;
+  }
+  .menu-btn__burger::before,
+  .menu-btn__burger::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 6px;
+    background: rgb(0, 0, 0);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(255,101,47,.2);
+    transition: all .5s ease-in-out;
+  }
+  .menu-btn__burger::before {
+    transform: translateY(-16px);
+  }
+  .menu-btn__burger::after {
+    transform: translateY(16px);
+  }
+  /* ANIMATION */
+  .menu-btn.open .menu-btn__burger {
+    transform: translateX(-50px);
+    background: transparent;
+    box-shadow: none;
+  }
+  .menu-btn.open .menu-btn__burger::before {
+    transform: rotate(45deg) translate(35px, -35px);
+  }
+  .menu-btn.open .menu-btn__burger::after {
+    transform: rotate(-45deg) translate(35px, 35px);
+  }
+
+/* Adjust the position and background color of the dropdown menu */
+.menu-btn .dropdown-menu {
+    background-color: black;
+    left: 0; /* Position the dropdown menu at the left edge */
+    right: auto; /* Reset the right position */
+    display: none; /* Hide the dropdown menu by default */
+    position: absolute; /* Position the dropdown menu */
+}
+
+/* Adjust the appearance of the dropdown links */
+.menu-btn .dropdown-menu a {
+    display: block; /* Display links as blocks (vertical) */
+    color: white; /* Change link color to white */
+    padding: 10px; /* Add padding for better spacing */
+}
+
+/* Optional: Hover effect for dropdown links */
+.menu-btn .dropdown-menu a:hover {
+    background-color: gray; /* Change background color on hover */
+}
+
+

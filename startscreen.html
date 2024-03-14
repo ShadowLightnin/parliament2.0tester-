@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Screen</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="neon.css">
+    <script>
+        $(document).ready(function(){
+            var dynamictext = ['\u00A0\u00A0\u00A0The Parliament of Justice\u00A0', '\u00A0\u00A0\u00A0Titans\u00A0', '\u00A0\u00A0\u00A0Stable Enforcers\u00A0', 
+            '\u00A0\u00A0\u00A0Kinetic Legion\u00A0', '\u00A0\u00A0\u00A0Cobros\u00A0', '\u00A0\u00A0\u00A0The Advanced Spartan 3 corp\u00A0', '\u00A0\u00A0\u00A0BludBruhs\u00A0', 
+            '\u00A0\u00A0\u00A0League\u00A0', '\u00A0\u00A0\u00A0The Conservation Resolution\u00A0'];
+            var index = 0;
+
+            $.fn.appendTextToDiv = function(){
+                if(index == dynamictext.length){
+                    index = 0;
+                }
+                $(".dynamic_text h2").text(dynamictext[index]);
+                index++
+
+                setTimeout(function(){
+                    $.fn.appendTextToDiv();
+                }, 2500)
+            }
+            $.fn.appendTextToDiv();
+
+                // Redirect to index.html when clicking anywhere on the screen
+        $(document.body).on('click', function() {
+            window.location.href = 'index.html';
+        });
+        })
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div class="static_text">
+                <h2> </h2>
+            </div>
+            <div class="dynamic_text">
+                <h2> </h2>
+                <div class="slide_box">
+                    <div class="slide_pipe"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- find the reconfig for rebase command in bash tomorrow in class -->
+<!-- $ git config core.editor code -->
+
+<!-- for git bash -->
+
+<!-- https://search.yahoo.com/yhs/search?p=gitbash%20set%20default%20text%20editor&hspart=fc&hsimp=yhs-3971&type=fc_AC5AE6A96A2_s69_g_e_d_n0002_c999&param1=7&param2=eJwtjcsKhDAMRX8lSwWp6UOl%2BCnioqMdDa1WfOAwXz8RhizuyQnhTjR2bb%2BPElE31nRFv%2FKOiIrxOXEMHNZaJtoYFVZCKiWUNkJJZD35xP46GC%2FHtKQvxejKSiBkN61jug9YT5AosAUWtWnhU5sc3LZFf%2FtXoLOsdCN0DVmYzyUWECl4mPwQUg7DvKfFl08rPgOHe7ud%2Fi8%2FeZ46bA%3D%3D
+
+https://stackoverflow.com/questions/10564/how-can-i-set-up-an-editor-to-work-with-git-on-windows
+https://search.yahoo.com/yhs/search?p=vim%20save%20file&hspart=fc&hsimp=yhs-3971&type=fc_AC5AE6A96A2_s69_g_e_d_n0002_c999&param1=7&param2=eJwtjcsKhDAMRX8lSwWp6UOl%2BCnioqMdDa1WfOAwXz8RhizuyQnhTjR2bb%2BPElE31nRFv%2FKOiIrxOXEMHNZaJtoYFVZCKiWUNkJJZD35xP46GC%2FHtKQvxejKSiBkN61jug9YT5AosAUWtWnhU5sc3LZFf%2FtXoLOsdCN0DVmYzyUWECl4mPwQUg7DvKfFl08rPgOHe7ud%2Fi8%2FeZ46bA%3D%3D -->
